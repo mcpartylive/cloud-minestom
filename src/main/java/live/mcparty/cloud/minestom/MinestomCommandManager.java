@@ -46,7 +46,7 @@ public class MinestomCommandManager<C> extends CommandManager<C> {
      *                                    {@link CommandExecutionCoordinator#simpleCoordinator()} and
      *                                    {@link AsynchronousCommandExecutionCoordinator}
      */
-    protected MinestomCommandManager(Function<CommandTree<C>, CommandExecutionCoordinator<C>> commandExecutionCoordinator,
+    public MinestomCommandManager(Function<CommandTree<C>, CommandExecutionCoordinator<C>> commandExecutionCoordinator,
                                      final @NotNull Function<CommandSender, C> commandSenderMapper,
                                      final @NotNull Function<C, CommandSender> backwardsCommandSenderMapper) {
         super(commandExecutionCoordinator, new MinestomCommandRegistrationHandler<>());
