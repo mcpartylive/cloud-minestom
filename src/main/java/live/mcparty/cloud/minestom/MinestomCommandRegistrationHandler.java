@@ -1,4 +1,4 @@
-package io.github.openminigameserver.cloudminestom;
+package live.mcparty.cloud.minestom;
 
 import cloud.commandframework.Command;
 import cloud.commandframework.arguments.CommandArgument;

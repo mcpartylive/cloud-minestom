@@ -1,4 +1,4 @@
-package io.github.openminigameserver.cloudminestom;
+package live.mcparty.cloud.minestom;
 
 import cloud.commandframework.CommandManager;
 import cloud.commandframework.CommandTree;
@@ -7,10 +7,11 @@ import cloud.commandframework.execution.CommandExecutionCoordinator;
 import cloud.commandframework.internal.CommandRegistrationHandler;
 import cloud.commandframework.meta.CommandMeta;
 import cloud.commandframework.meta.SimpleCommandMeta;
-import io.github.openminigameserver.cloudminestom.caption.MinestomCaptionRegistry;
-import io.github.openminigameserver.cloudminestom.parsers.PlayerArgument;
 import io.leangen.geantyref.TypeToken;
+import live.mcparty.cloud.minestom.caption.MinestomCaptionRegistry;
+import live.mcparty.cloud.minestom.parsers.PlayerArgument;
 import net.minestom.server.command.CommandSender;
+import net.minestom.server.command.ConsoleSender;
 import net.minestom.server.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -76,7 +77,7 @@ public class MinestomCommandManager<C> extends CommandManager<C> {
     public boolean hasPermission(@NotNull C sender,
                                  @NotNull String permission) {
         CommandSender minestomSender = backwardsMapCommandSender(sender);
-        return minestomSender.isConsole() || minestomSender.hasPermission(permission);
+        return minestomSender instanceof ConsoleSender || minestomSender.hasPermission(permission);
     }
 
     @Override

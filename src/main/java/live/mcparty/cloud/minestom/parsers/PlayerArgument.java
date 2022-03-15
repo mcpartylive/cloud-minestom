@@ -1,4 +1,4 @@
-package io.github.openminigameserver.cloudminestom.parsers;
+package live.mcparty.cloud.minestom.parsers;
 
 import cloud.commandframework.arguments.CommandArgument;
 import cloud.commandframework.arguments.parser.ArgumentParseResult;
@@ -7,12 +7,13 @@ import cloud.commandframework.captions.CaptionVariable;
 import cloud.commandframework.context.CommandContext;
 import cloud.commandframework.exceptions.parsing.NoInputProvidedException;
 import cloud.commandframework.exceptions.parsing.ParserException;
-import io.github.openminigameserver.cloudminestom.caption.MinestomCaptionKeys;
+import live.mcparty.cloud.minestom.caption.MinestomCaptionKeys;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -146,6 +147,7 @@ public final class PlayerArgument<C> extends CommandArgument<C, Player> {
      */
     public static final class PlayerParseException extends ParserException {
 
+        @Serial
         private static final long serialVersionUID = 2044681000582394398L;
         private final String input;
 

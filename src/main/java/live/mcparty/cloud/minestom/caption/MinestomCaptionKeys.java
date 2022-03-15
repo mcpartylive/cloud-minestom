@@ -1,4 +1,4 @@
-package io.github.openminigameserver.cloudminestom.caption;
+package live.mcparty.cloud.minestom.caption;
 
 import cloud.commandframework.captions.Caption;
 

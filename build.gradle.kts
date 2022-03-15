@@ -1,23 +1,47 @@
 plugins {
-    java
-    `java-library`
-    maven
+    id("java-library")
+    id("maven-publish")
 }
 
-val minestomVersion = "238ea649ab"
-val cloudVersion = "1.4.0"
+val cloud = "1.6.2"
 
-group = "io.github.openminigameserver"
-//Use the same version as cloud
-version = cloudVersion
+group = "live.mcparty"
+version = cloud
 
 repositories {
     mavenCentral()
-    maven(url = "https://jitpack.io")
-    maven("https://libraries.minecraft.net")
-    maven("https://repo.spongepowered.org/maven")
+    maven("https://jitpack.io")
 }
+
 dependencies {
-    api("cloud.commandframework:cloud-core:$cloudVersion")
-    compileOnly("com.github.Minestom:Minestom:$minestomVersion")
+    api("cloud.commandframework:cloud-core:$cloud")
+    compileOnly("com.github.Minestom:Minestom:db2d00819c")
+}
+
+tasks.withType(JavaCompile::class) {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://repo.mcparty.live/packages/")
+            credentials {
+                username = project.findProperty("mcp.user") as? String ?: System.getenv("REPO_USERNAME")
+                password = project.findProperty("mcp.key") as? String ?: System.getenv("REPO_TOKEN")
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("mcp") {
+            from(components["java"])
+        }
+    }
 }
